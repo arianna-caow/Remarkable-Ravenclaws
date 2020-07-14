@@ -41,11 +41,18 @@ for date in daterange(start_date, end_date):
             dataframe.to_csv(numberfile, index=False, header=None)
             for tweet in t.hydrate(open(numberfile)):
                 #print (tweet["place"]["country"])
+                if (tweet["place"] == None):
+                    continue
+                if (tweet["place"]["country"] == None):
+                    continue
+                '''
                 if ("place" not in tweet):
+                    print ("gibberish")
                     continue
                 if ("country" not in tweet["place"]):
                     #print ("sdjfksldf")
                     continue
+                '''
                 if (tweet["place"]["country"] == "United States"):
                     #print("sdkjf")
                     with open (readyfile, 'a', newline='') as csvfile:
